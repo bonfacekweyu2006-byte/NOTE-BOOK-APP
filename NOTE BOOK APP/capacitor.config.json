@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.notebookpro",
+  "appName": "Notebook Pro",
+  "webDir": "./",
+  "bundledWebRuntime": false
+}

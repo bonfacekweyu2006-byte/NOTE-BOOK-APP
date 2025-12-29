@@ -1,0 +1,21 @@
+{
+  "name": "notebook-pro",
+  "version": "1.0.0",
+  "description": "Notebook Pro - single-page note app packaged with Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "gen:android-icons": "node scripts/generate-android-icons.js"
+  },
+  "build": {
+    "appId": "com.example.notebookpro",
+    "files": ["**/*"],
+    "directories": { "output": "dist" }
+  },
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.0.0",
+    "electron-updater": "^5.4.0"
+  }
+}

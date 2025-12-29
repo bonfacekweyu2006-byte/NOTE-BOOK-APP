@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Notebook Pro</title>
+    <link rel="stylesheet" href="STYLE.CSS">
+</head>
+<body>
+
+<header>
+    <div class="header-left">
+        <img src="assets/icons/logo.svg" class="logo" alt="Notebook Pro">
+        <h1>Notebook Pro</h1>
+    </div>
+    <button id="toggleTheme" aria-label="Toggle theme">
+        <img src="assets/icons/moon.svg" class="theme-icon" alt="theme">
+    </button>
+</header>
+
+<div class="container">
+
+    <input type="text" id="search" placeholder="Search notes...">
+
+    <div class="web-search">
+        <input type="text" id="webQuery" placeholder="Search the web or select note text...">
+        <div class="web-sites">
+            <button id="siteGoogle">Google</button>
+            <button id="siteStack">StackOverflow</button>
+            <button id="siteMDN">MDN</button>
+            <button id="siteWiki">Wikipedia</button>
+        </div>
+    </div>
+
+    <div class="theme-controls">
+        <label>Background <input type="color" id="bgColor" title="Background color"></label>
+        <label>Card <input type="color" id="cardColor" title="Card color"></label>
+        <label>Accent <input type="color" id="accentColor" title="Accent color"></label>
+        <label>Text <input type="color" id="textColor" title="Text color"></label>
+        <div class="theme-actions">
+            <button id="saveTheme">Save Theme</button>
+            <button id="resetTheme">Reset Theme</button>
+        </div>
+        <div class="presets">
+            <span>Presets:</span>
+            <button id="presetLight">Light</button>
+            <button id="presetDark">Dark</button>
+            <button id="presetSolar">Solarized</button>
+        </div>
+        <div class="background-presets">
+            <span>Background images:</span>
+            <div class="bg-thumbs">
+                <button id="bgNone" class="bg-btn">None</button>
+                <button id="bgPic1" class="bg-thumb" title="Photo 1"><img src="https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=200&q=60" alt="Photo 1"></button>
+                <button id="bgPic2" class="bg-thumb" title="Photo 2"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=60" alt="Photo 2"></button>
+                <button id="bgPic3" class="bg-thumb" title="Photo 3"><img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=200&q=60" alt="Photo 3"></button>
+            </div>
+            <div class="bg-custom">
+                <input type="text" id="bgCustomUrl" placeholder="Custom image URL">
+                <button id="bgCustomSet">Set</button>
+                <button id="bgCustomClear">Clear</button>
+            </div>
+            <div class="bg-upload">
+                <label>Upload background: <input type="file" id="bgUpload" accept="image/*"></label>
+            </div>
+            <div class="bg-gallery">
+                <div class="bg-gallery-header">
+                    <h4>Uploaded backgrounds</h4>
+                    <button id="bgClearCache" title="Clear cached background object URLs">Clear cache</button>
+                </div>
+                <div id="bgGalleryList"></div>
+            </div>
+            <div class="bg-overlay-controls">
+                <label><input type="checkbox" id="bgOverlayToggle"> Dim background for readability</label>
+                <label>Overlay opacity: <input type="range" id="bgOverlayOpacity" min="0" max="100" value="35"></label>
+            </div>
+        </div>
+    </div>
+
+    <input type="text" id="title" placeholder="Note title">
+
+    <div id="content" class="editor" contenteditable="true" aria-label="Note content" placeholder="Write your note..."></div>
+
+    <div class="meta-row">
+        <select id="category">
+        <option value="General">General</option>
+        <option value="School">School</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+    </select>
+        <select id="folder">
+            <option value="Inbox">Inbox</option>
+            <option value="Personal">Personal</option>
+            <option value="Work">Work</option>
+            <option value="Study">Study</option>
+        </select>
+
+        <input type="text" id="tags" placeholder="Tags (comma-separated)">
+    </div>
+
+    <button id="saveNoteBtn" class="add-btn"><img src="assets/icons/add.svg" alt="add" class="icon"> Add Note</button>
+
+    <div class="folder-filter">
+        <label>Filter folder:
+            <select id="filterFolder">
+                <option value="all">All</option>
+                <option value="Inbox">Inbox</option>
+                <option value="Personal">Personal</option>
+                <option value="Work">Work</option>
+                <option value="Study">Study</option>
+            </select>
+        </label>
+    </div>
+
+    <div class="note-extensions">
+        <div class="attachments">
+            <label>Attachments: <input type="file" id="attachmentInput" multiple></label>
+            <div id="attachmentList"></div>
+        </div>
+
+        <div class="checklist">
+            <label>Checklist:</label>
+            <div class="checklist-row">
+                <input type="text" id="checkItemInput" placeholder="New item">
+                <button id="addCheckItem">Add</button>
+            </div>
+            <div id="checklistItems"></div>
+        </div>
+
+        <div class="reminder">
+            <label>Reminder: <input type="datetime-local" id="reminder"></label>
+        </div>
+
+        <div class="export-import">
+            <button id="exportAll">Export All (JSON)</button>
+            <button id="exportMD">Export Note (Markdown)</button>
+            <label>Import JSON: <input type="file" id="importJson" accept="application/json"></label>
+        </div>
+    </div>
+
+    <div id="notes"></div>
+</div>
+
+<script src="APP.JS"></script>
+    <script src="assets/font-emoji.js"></script>
+</body>
+</html>

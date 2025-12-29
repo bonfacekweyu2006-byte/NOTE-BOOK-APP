@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Preferences - Notebook Pro</title>
+  <style>
+    body{font-family:Arial,sans-serif;margin:12px;color:#222}
+    label{display:block;margin:8px 0}
+    input[type=range]{width:120px}
+    .actions{margin-top:12px}
+  </style>
+</head>
+<body>
+  <h3>Preferences</h3>
+  <label><input type="checkbox" id="prefOverlay"> Dim background for readability</label>
+  <label>Overlay opacity: <input type="range" id="prefOpacity" min="0" max="100" value="35"></label>
+  <label>Default theme:
+    <select id="prefTheme">
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="solar">Solarized</option>
+    </select>
+  </label>
+  <label><input type="checkbox" id="prefAutoStart"> Launch app on system login</label>
+  <div class="actions">
+    <button id="prefSave">Save</button>
+    <button id="prefClose">Close</button>
+  </div>
+  <script src="settings.js"></script>
+</body>
+</html>

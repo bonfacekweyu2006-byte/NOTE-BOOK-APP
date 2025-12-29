@@ -1,0 +1,270 @@
+:root {
+    --bg: #f4f6f8;
+    --card: #ffffff;
+    --text: #000000;
+    --accent: #007bff;
+    --bg-image: none;
+    --bg-image-opacity: 0.35;
+    --bg-overlay-rgb: 0,0,0;
+}
+
+.dark {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --text: #ffffff;
+    --accent: #66b2ff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg);
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /* subtle overlay using a pseudo-element could be added if needed */
+    color: var(--text);
+}
+
+/* Background overlay for readability */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(var(--bg-overlay-rgb,0,0,0), var(--bg-image-opacity,0.35));
+    z-index: 0;
+    transition: background 180ms ease;
+}
+
+/* ensure main UI sits above background and overlay */
+.container, header, #debugLog, .note { position: relative; z-index: 1; }
+
+header {
+    background: var(--accent);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.logo {
+    width: 36px;
+    height: 36px;
+}
+
+header button {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+}
+
+.theme-icon {
+    width: 18px;
+    height: 18px;
+    filter: invert(1);
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+}
+
+input, textarea, select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    background: var(--accent);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.note {
+    background: var(--card);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 5px solid var(--accent);
+}
+
+/* Theme controls layout */
+.theme-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    align-items: center;
+}
+.theme-controls label {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.background-presets button.active {
+    outline: 2px solid rgba(255,255,255,0.9);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.08) inset;
+    opacity: 0.95;
+}
+
+.bg-thumbs { display:flex; gap:6px; align-items:center; margin-top:6px; }
+.bg-thumb { border: none; padding:0; background: transparent; cursor: pointer; border-radius:6px; overflow:hidden; width:48px; height:48px; }
+.bg-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.bg-btn { padding:6px 8px; border-radius:6px; background:rgba(0,0,0,0.05); border:none; cursor:pointer; }
+.bg-custom { display:flex; gap:6px; margin-top:6px; align-items:center; }
+.bg-custom input { flex:1; padding:6px; }
+.bg-custom button { padding:6px 8px; }
+.bg-upload { margin-top:6px; }
+.bg-overlay-controls { display:flex; gap:10px; align-items:center; margin-top:6px; }
+.bg-thumb:hover { transform: scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.15); }
+
+.bg-gallery { margin-top:10px; }
+#bgGalleryList { display:flex; gap:8px; flex-wrap:wrap; }
+.bg-gallery-item { width:64px; height:64px; position:relative; border-radius:6px; overflow:hidden; }
+.bg-gallery-item img { width:100%; height:100%; object-fit:cover; display:block; }
+.bg-gallery-item button { position:absolute; top:4px; right:4px; background:rgba(255,255,255,0.9); border:none; border-radius:50%; padding:2px 6px; cursor:pointer; }
+.bg-gallery-header { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.bg-gallery-header h4 { margin:0; font-size:14px; }
+#bgClearCache { padding:6px 8px; background:rgba(0,0,0,0.06); border-radius:6px; border:none; cursor:pointer; }
+.theme-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* Smooth transitions when theme changes */
+body, .note, header, button, input, textarea, select {
+    transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease;
+}
+
+.note small {
+    opacity: 0.7;
+}
+
+.note-actions {
+    margin-top: 8px;
+}
+
+.note-actions button {
+    width: auto;
+    padding: 5px 8px;
+    margin-right: 5px;
+}
+
+.add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+}
+
+/* Editor and meta styles */
+.editor {
+    min-height: 120px;
+    background: var(--card);
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 4px;
+    outline: none;
+}
+
+.meta-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    align-items: center;
+}
+
+.tag {
+    display: inline-block;
+    background: rgba(0,0,0,0.06);
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin-right: 6px;
+    font-size: 12px;
+}
+
+.note .meta {
+    margin-top: 8px;
+}
+
+.folder-filter {
+    margin: 10px 0 6px;
+}
+
+.note-extensions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.attachments input[type="file"] { display: inline-block; }
+#attachmentList { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+.attach-thumb { width:64px; height:64px; object-fit:cover; border-radius:6px; border:1px solid rgba(0,0,0,0.08); }
+.attach-item { position:relative; display:inline-block; }
+.attach-remove { position:absolute; top:-6px; right:-6px; background:#fff; border-radius:50%; padding:2px; cursor:pointer; border:1px solid rgba(0,0,0,0.1); }
+
+.checklist-row { display:flex; gap:8px; margin-top:6px; }
+#checklistItems { margin-top:8px; }
+.checklist-item { display:flex; gap:8px; align-items:center; margin-bottom:6px; }
+
+.reminder { margin-top:6px; }
+
+.export-import { display:flex; gap:8px; align-items:center; margin-top:6px; }
+
+/* Web search controls */
+.web-search {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin: 8px 0;
+}
+.web-search input#webQuery {
+    flex: 1 1 auto;
+    padding: 8px;
+}
+.web-sites {
+    display: flex;
+    gap: 6px;
+}
+.web-sites button {
+    padding: 8px 10px;
+    font-size: 13px;
+}
+
+/* Debug log */
+#debugLog {
+    position: fixed;
+    right: 12px;
+    bottom: 12px;
+    max-width: 320px;
+    max-height: 200px;
+    overflow:auto;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 6px;
+    z-index: 9999;
+}
